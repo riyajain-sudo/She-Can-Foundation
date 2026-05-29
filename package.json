@@ -1,0 +1,18 @@
+{
+  "name": "she-can-foundation-mern",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MERN stack contact form project for She Can Foundation.",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "npm run dev --workspace client",
+    "server": "npm run dev --workspace server",
+    "build": "npm run build --workspace client",
+    "start": "npm run start --workspace server",
+    "install:all": "npm install --workspaces"
+  },
+  "workspaces": ["client", "server"],
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
