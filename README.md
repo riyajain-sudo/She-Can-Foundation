@@ -21,20 +21,22 @@ A full-stack MERN internship task project with a responsive orange, black, and w
    npm install
    ```
 
-2. Create `server/.env`:
+2. Start Backend Server:
 
    ```bash
-   PORT=5000
-   MONGO_URI=mongodb://127.0.0.1:27017/she_can_foundation
-   CLIENT_URL=http://localhost:5173
+   cd server
+   npm start
+   The backend runs on `http://localhost:5000`.
    ```
 
-3. Start MongoDB locally, then run the project:
+3. Start Frontend:
 
    ```bash
+   cd client 
    npm run dev
+   Frontend runs on `http://localhost:5173`
    ```
+   
+Open the frontend at `http://localhost:5173`.
 
-4. Open the frontend at `http://localhost:5173`.
 
-The backend runs at `http://localhost:5000`.
