@@ -68,14 +68,14 @@ export default function App() {
       });
       const data = await response.json();
 
-      if (!response.ok) {
+      if (!response.ok || data.success !== true || !data.receiptId) {
         throw new Error(data.message || "Something went wrong.");
       }
 
       setForm(initialForm);
       setStatus({
         type: "success",
-        message: "Form Submitted Successfully",
+        message: `Message saved. Receipt: ${data.receiptId}`,
       });
     } catch (error) {
       setStatus({
@@ -103,8 +103,7 @@ export default function App() {
 
           <h1>Every message can begin a stronger future.</h1>
           <p>
-            Connect with She Can Foundation through this contact
-            form
+            This demonstration form is not configured to deliver or retain messages.
           </p>
 
           <div className="hero-actions">
@@ -150,8 +149,9 @@ export default function App() {
               onChange={handleChange}
               placeholder="Enter your full name"
               aria-invalid={Boolean(errors.name)}
+              aria-describedby={errors.name ? "name-error" : undefined}
             />
-            {errors.name ? <small>{errors.name}</small> : null}
+            {errors.name ? <small id="name-error" role="alert">{errors.name}</small> : null}
           </label>
 
           <label className="field">
@@ -166,8 +166,9 @@ export default function App() {
               onChange={handleChange}
               placeholder="you@example.com"
               aria-invalid={Boolean(errors.email)}
+              aria-describedby={errors.email ? "email-error" : undefined}
             />
-            {errors.email ? <small>{errors.email}</small> : null}
+            {errors.email ? <small id="email-error" role="alert">{errors.email}</small> : null}
           </label>
 
           <label className="field field-wide">
@@ -182,8 +183,9 @@ export default function App() {
               placeholder="Write your message here..."
               rows="6"
               aria-invalid={Boolean(errors.message)}
+              aria-describedby={errors.message ? "message-error" : undefined}
             />
-            {errors.message ? <small>{errors.message}</small> : null}
+            {errors.message ? <small id="message-error" role="alert">{errors.message}</small> : null}
           </label>
 
           <button className="submit-button" type="submit" disabled={isSubmitting}>
